@@ -1,0 +1,18 @@
+ul.list-reviews{
+	margin-top: 40px;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+
+.filled {
+  color: #ff1e1e;
+}
+
+.error {
+	color: red;
+	font-size: 0.95rem;
+	margin-bottom: 0.5rem;
+}

@@ -1,0 +1,43 @@
+	<article class="mt-4">
+		<div class="float-right my-1">
+			<button type="button"  (click)="handleChange()" class="btn btn-outline-primary mr-2" >
+				<i class="fa fa-save"></i> Guardar
+			</button>
+			<button type="button" routerLink="{{baseReviewUrl}}/{{review.id}}" class="btn btn-outline-secondary" >
+				<i class="fa fa-cancel"></i> Cancelar
+			</button>
+		</div>
+
+		<div class="form-group form-control-lg pl-0">
+			<span size="40"> {{review.book.title}} </span>
+		</div>
+
+		<em>by {{review.userId}}</em>
+
+		<hr/>
+
+
+
+		<section>
+			<div class="dropdown">
+				<span>Rating: </span>
+				<select [(ngModel)]="review && review.rating">
+					<option value = "" disabled selected>--</option>
+					<option value ="1">1</option>
+					<option value ="2">2</option>
+					<option value ="3">3</option>
+					<option value ="4">4</option>
+					<option value ="5">5</option>
+				</select>
+				<p *ngIf = "warningFlag">
+				  <ngb-alert type="danger" (close)="close()"> Rating field is required.</ngb-alert>
+				</p>
+			</div>
+
+
+			<div class="form-group">
+				<textarea class="form-control" rows="20" [(ngModel)]="review && review.content"></textarea>
+			</div>
+		</section>
+
+	</article>

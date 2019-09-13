@@ -1,0 +1,43 @@
+<confirm-modal #confirmModal (deleteIt)="handleDelete($event)"></confirm-modal>
+
+<i class="fa fa-4x fa-rotate-270 fa-level-up" routerLink="{{baseReviewUrl}}"></i>
+
+<article *ngIf="reviewObs | async as review else loadingReviewDetail">
+<div class="float-right">
+	<button class="btn btn-danger mt-1 col-sm-" *ngIf="isCurrentUserAuthor" (click)="confirmModal.open(confirmModal.content)">
+	   <i class="fa fa-remove"></i> Borrar
+	</button>
+	&nbsp;
+	<button class="btn btn-primary mt-1 col-sm-" routerLink="{{baseReviewUrl}}/{{review.id}}/edit"  *ngIf="isCurrentUserAuthor" >
+	   <i class="fa fa-edit"></i> Editar
+	</button>
+</div>
+
+
+
+	<h1>{{review.book?.title}}</h1>
+	<em>by {{review.book?.author.name}} {{review.book?.author.surname}}</em>
+
+	<hr/>
+
+	<section>
+		<div>
+				Rating:
+				<ngb-rating [rate]="review.rating" [readonly]="true" max="5">
+					<ng-template let-fill="fill">
+						<span class="star" [class.filled]="fill === 100">&#9733;</span>
+					</ng-template>
+
+				</ngb-rating>
+		</div>
+		<div>
+					{{review.content}}
+		</div>
+
+	</section>
+
+</article>
+
+<ng-template #loadingReviewDetail>
+	<h2>Cargando revision...</h2>
+</ng-template>

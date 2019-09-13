@@ -1,0 +1,15 @@
+
+<div *ngFor="let role of roles">
+  <input value="{{role}}" type="checkbox"
+    [checked]="this.userRoles.indexOf(role) > -1"
+    (change)="this.onChangeCheckBoxvalue(role)"/> {{role}}
+</div>
+<div class="btn-save">
+  <button class="btn btn-primary"
+    (click)='onSaveChanges()'
+    [routerLink]="['/user-base']"
+    [disabled]="this.userRoles.length === 0">Guardar</button>
+
+    <button class="btn btn-secondary"
+      (click)='onCancel()'>Cancelar</button>
+</div>

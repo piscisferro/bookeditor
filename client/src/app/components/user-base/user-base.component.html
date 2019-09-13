@@ -1,0 +1,26 @@
+
+
+<ul class="list-group list-userBases">
+
+	<div *ngFor="let userBase of userBases" class="list-group-item list-group-item-action flex-column align-items-start">
+
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">{{userBase.username}}</h5>
+					<a [routerLink]="['/user-base', userBase.id]">detalle</a>
+	    </div>
+
+	</div>
+
+	<div *ngIf="showEdition" class="list-group-item list-group-item-action flex-column align-items-start">
+
+		<input type="text" name="username" [(ngModel)]="username" [required]="true">
+
+		<app-role-checks [userRoles]="this.userRoles" (notify)='onNotify($event)' (cancel)='onCancel($event)'></app-role-checks>
+
+	</div>
+
+	<div class="btn-save">
+		<button class="btn btn-primary" *ngIf="!showEdition" (click)="newUser()">Nuevo Usuario</button>
+	</div>
+
+</ul>

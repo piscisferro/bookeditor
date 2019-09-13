@@ -1,0 +1,46 @@
+<button type="button" class="btn btn-outline-primary" (click)="isCollapse = !isCollapse"> Nuevo <i *ngIf="!isCollapse" class="fa fa-angle-up"></i><i *ngIf="isCollapse" class="fa fa-angle-down"></i></button>
+<div [ngbCollapse]="isCollapse">
+	<hr />
+
+	<form [formGroup]="addReviewForm" (ngSubmit)="onSubmit(addReviewForm.value)">
+		<div class="form-group">
+			<label>Libro:</label>
+			<select class="form-control form-group" name="book" formControlName="bookId">
+				<option *ngFor="let book of books" value="{{book.id}}">{{ book.title }}</option>
+			</select>
+		</div>
+
+
+		<div class="form-group">
+			<label>Rating:</label>
+			<ngb-rating max="5" [formControl]="ratingCtrl" formControlName="rating">
+				<ng-template let-fill="fill">
+					<span class="star" [class.filled]="fill === 100">&#9733;</span>
+				</ng-template>
+			</ngb-rating>
+		</div>
+
+		<div class="form-group">
+			<label>Comentario:</label>
+			<p class="error" *ngIf= "addReviewForm.get('content').hasError('maxlength')"><em>*El campo comentario debe de tener menos de 50 caracteres.</em></p>
+			<textarea class="form-control" rows="3" formControlName="content"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary" [disabled]="!addReviewForm.valid">Añadir</button>
+	</form>
+	<hr />
+</div>
+
+
+<ul class="list-group list-reviews">
+	<a routerLink="{{baseReviewUrl}}/{{review.id}}" *ngFor="let review of reviews" class="list-group-item list-group-item-action flex-column align-items-start">
+
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">{{review.book.title}}</h5>
+	      <small>
+					<ngb-rating [rate]="review.rating" [readonly]="true" max="5">	</ngb-rating>
+				</small>
+	    </div>
+
+	    <small>review by {{review.userId}}</small>
+	</a>
+</ul>

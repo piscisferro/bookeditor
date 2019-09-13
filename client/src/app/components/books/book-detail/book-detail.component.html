@@ -1,0 +1,30 @@
+
+<i class="fa fa-4x fa-rotate-270 fa-level-up" routerLink="{{baseBookUrl}}"></i>
+
+
+
+
+<article *ngIf="bookObs | async as book else loadingBookDetail">
+
+	<button class="btn btn-primary float-right mt-1" routerLink="{{baseBookUrl}}/{{book.id}}/edit" *ngIf="isCurrentUserAuthor" >
+	   <i class="fa fa-edit"></i> Editar
+	</button>
+
+	<h1>{{book.title}}</h1>
+	<em>by {{book.author.name}} {{book.author.surname}}</em>
+	
+	<hr/>
+	
+	<section>
+		{{book.content}}
+	</section>
+
+</article>
+
+<ng-template #loadingBookDetail>
+	<h2>Cargando libro...</h2>
+</ng-template>
+
+
+
+

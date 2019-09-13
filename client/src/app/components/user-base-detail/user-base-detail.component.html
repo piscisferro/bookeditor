@@ -1,0 +1,11 @@
+
+
+<article>
+
+	<h1>{{userBase.username}}</h1>
+
+	<hr/>
+
+	<app-role-checks [userRoles]="this.userRoles" (notify)='onNotify($event)' (cancel)='onCancel($event)'></app-role-checks>
+
+</article>

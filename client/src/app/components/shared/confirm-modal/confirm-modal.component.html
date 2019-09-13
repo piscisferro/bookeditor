@@ -1,0 +1,15 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Borrar review</h4>
+    <button type="button" class="close" (click)="modal.dismiss()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    ¿Desea borrar este elemento permanentemente?
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="handleDelete()">Aceptar</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close()">Cancelar</button>
+  </div>
+</ng-template>

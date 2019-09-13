@@ -1,0 +1,20 @@
+
+
+
+<ul class="list-group list-books">
+
+	<a routerLink="{{baseBookUrl}}/{{book.id}}" *ngFor="let book of books" class="list-group-item list-group-item-action flex-column align-items-start">
+
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">{{book.title}}</h5>
+	      <small>{{book.state}}</small>
+	    </div>
+
+	    <small>by {{book.author.name}} {{book.author.surname}}</small>
+	</a>
+	
+</ul>
+
+
+
+
